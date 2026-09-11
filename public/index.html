@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>邻传 · 局域网传文件</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c1a16'/%3E%3Cpath d='M10 18l6-8 6 8h-3v6h-6v-6z' fill='%23ff6b2c'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="app">
+      <header class="top">
+        <div class="brand">
+          <span class="logo" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28">
+              <rect width="32" height="32" rx="8" fill="#2a241c" />
+              <path d="M10 18l6-8 6 8h-3v6h-6v-6z" fill="#ff6b2c" />
+            </svg>
+          </span>
+          <div>
+            <h1>邻传</h1>
+            <p class="tag">同一局域网，打开这个页面就能互传</p>
+          </div>
+        </div>
+        <div class="me">
+          <label class="name-field">
+            <span>我的名字</span>
+            <input id="my-name" maxlength="24" autocomplete="off" spellcheck="false" />
+          </label>
+          <div id="conn-status" class="status pending">连接中</div>
+        </div>
+      </header>
+
+      <section class="invite" id="invite">
+        <div class="invite-copy">
+          <p class="invite-kicker">让另一台电脑打开</p>
+          <div class="url-row">
+            <code id="lan-url">正在获取地址…</code>
+            <button type="button" id="copy-url" class="ghost">复制</button>
+          </div>
+          <p class="hint" id="url-hint">两台电脑连同一个 Wi-Fi / 交换机即可。若对方打不开，请在防火墙中放行 3000 端口。</p>
+        </div>
+        <div class="invite-urls" id="extra-urls" hidden></div>
+      </section>
+
+      <main class="layout">
+        <aside class="peers-panel">
+          <div class="panel-head">
+            <h2>在线设备</h2>
+            <span id="peer-count" class="count">0</span>
+          </div>
+          <ul id="peer-list" class="peer-list"></ul>
+          <p id="peer-empty" class="empty-note">等待另一台电脑打开这个页面…</p>
+        </aside>
+
+        <section class="stage">
+          <div id="drop-zone" class="drop-zone">
+            <input id="file-input" type="file" multiple hidden />
+            <div class="drop-art" aria-hidden="true">
+              <svg viewBox="0 0 88 88" width="72" height="72">
+                <rect x="18" y="10" width="44" height="56" rx="6" fill="none" stroke="currentColor" stroke-width="3" />
+                <path d="M32 40l12-12 12 12M44 28v28" fill="none" stroke="#ff6b2c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h2 id="drop-title">把文件拖到这里</h2>
+            <p id="drop-sub">或点此选择文件，发送给选中的设备</p>
+            <button type="button" id="pick-files" class="primary">选择文件</button>
+          </div>
+
+          <div class="transfers">
+            <div class="panel-head">
+              <h2>传输</h2>
+              <button type="button" id="clear-done" class="text-btn">清除已完成</button>
+            </div>
+            <ul id="transfer-list" class="transfer-list"></ul>
+            <p id="transfer-empty" class="empty-note">还没有传输记录。</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=3" type="module"></script>
+  </body>
+</html>

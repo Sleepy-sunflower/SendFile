@@ -1,0 +1,13 @@
+{
+  "name": "sendfile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LAN browser-to-browser file transfer",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
